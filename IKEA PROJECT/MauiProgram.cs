@@ -1,7 +1,7 @@
 ﻿using IKEA_PROJECT;
 using Microsoft.Extensions.Logging;
 
-namespace IkeaNavigation;
+namespace IKEA_PROJECT;
 
 public static class MauiProgram
 {
