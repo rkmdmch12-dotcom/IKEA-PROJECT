@@ -1,128 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IKEA_PROJECT.MainPage"
-             Title="ניווט בסניף איקאה"
-             FlowDirection="RightToLeft"
-             BackgroundColor="#F4F5F7">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="IKEA_PROJECT.MainPage"
+    FlowDirection="RightToLeft"
+    BackgroundColor="#E8E8E8">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout Padding="20" Spacing="18">
 
-            <!-- כותרת ראשית ומותג -->
-            <Frame BackgroundColor="#0058A3" 
-                   CornerRadius="15" 
-                   HasShadow="True" 
-                   Padding="20" 
-                   BorderColor="Transparent">
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="IKEA NAVIGATOR" 
-                           TextColor="#FFDA1A" 
-                           FontSize="26" 
-                           FontAttributes="Bold" 
-                           HorizontalOptions="Center" />
-                    <Label Text="מערכת ניווט חכמה בתוך החנות" 
-                           TextColor="White" 
-                           FontSize="14" 
-                           HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Frame>
+            <Label Text="IKEA NAVIGATOR"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#00569D"
+                   HorizontalOptions="Center"/>
 
-            <!-- סקשן בחירת מוצא ויעד -->
-            <Border Stroke="#E0E0E0" 
-                    StrokeThickness="1" 
-                    StrokeShape="RoundRectangle 12" 
-                    BackgroundColor="White" 
-                    Padding="15">
+            <Label Text="מערכת ניווט חכמה בתוך חנות איקאה"
+                   FontSize="16"
+                   TextColor="Black"
+                   HorizontalOptions="Center"/>
+
+            <Border BackgroundColor="White"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 15"
+                    Padding="18">
+
                 <VerticalStackLayout Spacing="15">
 
-                    <!-- Picker 1: מיקום נוכחי (מוצא) -->
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="איפה אתה נמצא עכשיו? (נקודת מוצא)" 
-                               FontSize="14" 
-                               FontAttributes="Bold" 
-                               TextColor="#333333" />
-                        <Picker x:Name="StartLocationPicker" 
-                                Title="בחר מיקום מוצא..." 
-                                TitleColor="#888888"
-                                TextColor="#0058A3" 
-                                FontSize="16" />
-                    </VerticalStackLayout>
+                    <Label Text="נקודת מוצא"
+                           FontAttributes="Bold"
+                           FontSize="17"/>
 
-                    <BoxView HeightRequest="1" Color="#EEEEEE" HorizontalOptions="Fill" />
+                    <Picker x:Name="StartPicker"
+                            Title="בחרי מאיפה את מתחילה"/>
 
-                    <!-- Picker 2: יעד מבוקש -->
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="לאן תרצה להגיע? (נקודת יעד)" 
-                               FontSize="14" 
-                               FontAttributes="Bold" 
-                               TextColor="#333333" />
-                        <Picker x:Name="TargetLocationPicker" 
-                                Title="בחר מחלקה או מוצר..." 
-                                TitleColor="#888888"
-                                TextColor="#0058A3" 
-                                FontSize="16" />
-                    </VerticalStackLayout>
+                    <Label Text="נקודת יעד"
+                           FontAttributes="Bold"
+                           FontSize="17"/>
+
+                    <Picker x:Name="TargetPicker"
+                            Title="בחרי לאן את רוצה להגיע"/>
 
                 </VerticalStackLayout>
             </Border>
 
-            <!-- כפתורי פעולה -->
-            <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+            <Button Text="חשב מסלול"
+                    BackgroundColor="#00569D"
+                    TextColor="White"
+                    CornerRadius="12"
+                    Clicked="CalculateRoute_Clicked"/>
 
-                <!-- כפתור חישוב מסלול -->
-                <Button Grid.Column="0"
-                        x:Name="CalculateRouteButton"
-                        Text="חשוֹב מסלול 🗺️" 
-                        BackgroundColor="#0058A3" 
-                        TextColor="White" 
-                        FontAttributes="Bold" 
-                        FontSize="16" 
-                        CornerRadius="10" 
-                        HeightRequest="50" />
+            <Border BackgroundColor="White"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 15"
+                    Padding="18">
 
-                <!-- כפתור הצגת מפה -->
-                <Button Grid.Column="1"
-                        x:Name="ShowMapButton"
-                        Text="הצג מפה מלאה 📍" 
-                        BackgroundColor="#FFDA1A" 
-                        TextColor="#111111" 
-                        FontAttributes="Bold" 
-                        FontSize="16" 
-                        CornerRadius="10" 
-                        HeightRequest="50" />
-            </Grid>
-
-            <!-- סקשן תוצאות הניווט (3 Labels) -->
-            <Border Stroke="#E0E0E0" 
-                    StrokeThickness="1" 
-                    StrokeShape="RoundRectangle 12" 
-                    BackgroundColor="White" 
-                    Padding="15">
                 <VerticalStackLayout Spacing="12">
 
-                    <Label Text="פרטי המסלול שלך:" 
-                           FontSize="16" 
-                           FontAttributes="Bold" 
-                           TextColor="#0058A3" />
+                    <Label Text="המסלול שלך"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#00569D"/>
 
-                    <!-- Label 1: מרחק משוער -->
-                    <Label x:Name="DistanceResultLabel" 
-                           Text="מרחק משוער: -" 
-                           FontSize="14" 
-                           TextColor="#444444" />
+                    <Label x:Name="RouteLabel"
+                           Text="כאן יוצג המסלול"/>
 
-                    <!-- Label 2: זמן הליכה משוער -->
-                    <Label x:Name="TimeResultLabel" 
-                           Text="זמן הליכה משוער: -" 
-                           FontSize="14" 
-                           TextColor="#444444" />
+                    <Label x:Name="LengthLabel"
+                           Text="מרחק: -"/>
 
-                    <!-- Label 3: הוראות ניווט / מחלקות בדרך -->
-                    <Label x:Name="InstructionsResultLabel" 
-                           Text="הוראות מסלול: יש לבחור מוצא ויעד וללחוץ על 'חשוב מסלול'." 
-                           FontSize="14" 
-                           TextColor="#666666" />
+                    <Label x:Name="TimeLabel"
+                           Text="זמן הליכה: -"/>
+
+                    <Label x:Name="StatusLabel"
+                           Text=""
+                           TextColor="Green"/>
 
                 </VerticalStackLayout>
             </Border>
