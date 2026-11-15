@@ -75,7 +75,13 @@
                            Text=""
                            TextColor="Green"/>
 
-                </VerticalStackLayout>
+                </VerticalStackLayout
+                                     <!-- אזור הציור הגרפי של המסלול -->
+                <GraphicsView x:Name="mapGraphicsView"
+              HeightRequest="200"
+              WidthRequest="300"
+              BackgroundColor="#F0F0F0"
+              HorizontalOptions="Center" /> >
             </Border>
 
         </VerticalStackLayout>

@@ -7,6 +7,7 @@ namespace IKEA_PROJECT;
 
 public partial class MainPage : ContentPage
 {
+    private MapRouteDrawable mapDrawable;
     private readonly List<string> locations = new()
     {
         "כניסה",
@@ -24,7 +25,8 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-
+        mapDrawable = new MapRouteDrawable();
+        mapGraphicsView.Drawable = mapDrawable;
         StartPicker.ItemsSource = locations;
         TargetPicker.ItemsSource = locations;
 
@@ -57,7 +59,9 @@ public partial class MainPage : ContentPage
     }
 
     private void CalculateRoute_Clicked(
-        object sender, EventArgs e)
+        object sender, EventArgs e) 
+     
+     
     {
         string? start = StartPicker.SelectedItem as string;
         string? target = TargetPicker.SelectedItem as string;
@@ -95,6 +99,9 @@ public partial class MainPage : ContentPage
 
         StatusLabel.Text = "המסלול חושב בהצלחה!";
         StatusLabel.TextColor = Colors.Green;
+        StatusLabel.Text = "המסלול חושב בהצלחה!";
+        StatusLabel.TextColor = Colors.Green;
+    }
     }
 
     private (List<string> path, double distance)
