@@ -102,7 +102,6 @@ public partial class MainPage : ContentPage
         StatusLabel.Text = "המסלול חושב בהצלחה!";
         StatusLabel.TextColor = Colors.Green;
     }
-    }
 
     private (List<string> path, double distance)
         FindShortestPath(string start, string target)

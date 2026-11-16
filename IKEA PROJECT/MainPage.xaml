@@ -20,12 +20,13 @@
                    TextColor="Black"
                    HorizontalOptions="Center"/>
 
+            <!-- בחירת נקודת מוצא ויעד -->
             <Border BackgroundColor="White"
                     StrokeThickness="0"
                     StrokeShape="RoundRectangle 15"
                     Padding="18">
 
-                <VerticalStackLayout Spacing="15">
+                <VerticalStackLayout Spacing="12">
 
                     <Label Text="נקודת מוצא"
                            FontAttributes="Bold"
@@ -50,6 +51,7 @@
                     CornerRadius="12"
                     Clicked="CalculateRoute_Clicked"/>
 
+            <!-- תצוגת המסלול -->
             <Border BackgroundColor="White"
                     StrokeThickness="0"
                     StrokeShape="RoundRectangle 15"
@@ -75,13 +77,14 @@
                            Text=""
                            TextColor="Green"/>
 
-                </VerticalStackLayout
-                                     <!-- אזור הציור הגרפי של המסלול -->
-                <GraphicsView x:Name="mapGraphicsView"
-              HeightRequest="200"
-              WidthRequest="300"
-              BackgroundColor="#F0F0F0"
-              HorizontalOptions="Center" /> >
+                    <!-- אזור הציור הגרפי של המסלול -->
+                    <GraphicsView x:Name="mapGraphicsView"
+                                  HeightRequest="200"
+                                  WidthRequest="300"
+                                  BackgroundColor="#F0F0F0"
+                                  HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
             </Border>
 
         </VerticalStackLayout>
