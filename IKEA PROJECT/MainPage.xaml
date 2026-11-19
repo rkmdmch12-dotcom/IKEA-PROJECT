@@ -1,90 +1,125 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="IKEA_PROJECT.MainPage"
-    FlowDirection="RightToLeft"
-    BackgroundColor="#E8E8E8">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IKEA_PROJECT.MainPage"
+             Title="מפת סניף"
+             BackgroundColor="#F4F7FB">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="18">
+        <VerticalStackLayout Padding="16" Spacing="14">
 
-            <Label Text="IKEA NAVIGATOR"
-                   FontSize="28"
-                   FontAttributes="Bold"
-                   TextColor="#00569D"
-                   HorizontalOptions="Center"/>
-
-            <Label Text="מערכת ניווט חכמה בתוך חנות איקאה"
-                   FontSize="16"
-                   TextColor="Black"
-                   HorizontalOptions="Center"/>
-
-            <!-- בחירת נקודת מוצא ויעד -->
-            <Border BackgroundColor="White"
-                    StrokeThickness="0"
-                    StrokeShape="RoundRectangle 15"
+            <Border BackgroundColor="#0051BA"
+                    Stroke="#FFDB00"
+                    StrokeThickness="2"
                     Padding="18">
-
-                <VerticalStackLayout Spacing="12">
-
-                    <Label Text="נקודת מוצא"
-                           FontAttributes="Bold"
-                           FontSize="17"/>
-
-                    <Picker x:Name="StartPicker"
-                            Title="בחרי מאיפה את מתחילה"/>
-
-                    <Label Text="נקודת יעד"
-                           FontAttributes="Bold"
-                           FontSize="17"/>
-
-                    <Picker x:Name="TargetPicker"
-                            Title="בחרי לאן את רוצה להגיע"/>
-
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="4">
+                    <Label x:Name="CityTitleLabel"
+                           Text="IKEA NAVIGATOR"
+                           TextColor="White"
+                           FontSize="22"
+                           FontAttributes="Bold" />
+                    <Label Text="בחר נקודת מוצא ויעד או לחץ על המפה"
+                           TextColor="#DCEBFF"
+                           FontSize="13.5" />
                 </VerticalStackLayout>
             </Border>
 
-            <Button Text="חשב מסלול"
-                    BackgroundColor="#00569D"
-                    TextColor="White"
-                    CornerRadius="12"
-                    Clicked="CalculateRoute_Clicked"/>
-
-            <!-- תצוגת המסלול -->
             <Border BackgroundColor="White"
-                    StrokeThickness="0"
-                    StrokeShape="RoundRectangle 15"
-                    Padding="18">
-
-                <VerticalStackLayout Spacing="12">
-
-                    <Label Text="המסלול שלך"
-                           FontSize="20"
+                    Stroke="#E2E8F0"
+                    StrokeThickness="1"
+                    Padding="14">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="נקודת מוצא"
+                           FontSize="14"
                            FontAttributes="Bold"
-                           TextColor="#00569D"/>
+                           TextColor="#0051BA" />
+                    <Picker x:Name="StartPicker"
+                            Title="בחר נקודת מוצא" />
 
-                    <Label x:Name="RouteLabel"
-                           Text="כאן יוצג המסלול"/>
+                    <Label Text="נקודת יעד"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#0051BA" />
+                    <Picker x:Name="TargetPicker"
+                            Title="בחר נקודת יעד" />
 
-                    <Label x:Name="LengthLabel"
-                           Text="מרחק: -"/>
-
-                    <Label x:Name="TimeLabel"
-                           Text="זמן הליכה: -"/>
+                    <Button Text="חשב מסלול"
+                            BackgroundColor="#0051BA"
+                            TextColor="#FFDB00"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="46"
+                            Clicked="CalculateRoute_Clicked" />
 
                     <Label x:Name="StatusLabel"
-                           Text=""
-                           TextColor="Green"/>
-
-                    <!-- אזור הציור הגרפי של המסלול -->
-                    <GraphicsView x:Name="mapGraphicsView"
-                                  HeightRequest="200"
-                                  WidthRequest="300"
-                                  BackgroundColor="#F0F0F0"
-                                  HorizontalOptions="Center"/>
-
+                           FontSize="13.5" />
+                    <Label x:Name="RouteLabel"
+                           FontSize="14.5"
+                           FontAttributes="Bold"
+                           TextColor="#0051BA" />
                 </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="White"
+                    Stroke="#E2E8F0"
+                    StrokeThickness="1"
+                    Padding="6">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+                <Grid HeightRequest="240">
+                    <Image x:Name="CityMapImage"
+                           Aspect="Fill" />
+                    <GraphicsView x:Name="mapGraphicsView"
+                                  BackgroundColor="Transparent">
+                        <GraphicsView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMapTapped" />
+                        </GraphicsView.GestureRecognizers>
+                    </GraphicsView>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#FFFBE6"
+                    Stroke="#FFDB00"
+                    StrokeThickness="1.5"
+                    Padding="14">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                    <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center">
+                        <Label Text="זמן הגעה משוער"
+                               FontSize="12.5"
+                               TextColor="#475569"
+                               HorizontalOptions="Center" />
+                        <Label x:Name="TimeLabel"
+                               Text="--"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#0051BA"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center">
+                        <Label Text="מרחק"
+                               FontSize="12.5"
+                               TextColor="#475569"
+                               HorizontalOptions="Center" />
+                        <Label x:Name="DistanceKmLabel"
+                               Text="--"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#0051BA"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Grid>
             </Border>
 
         </VerticalStackLayout>

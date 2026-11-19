@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IKEA_PROJECT.NewPage1"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F4F7FB">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,24,20,28" Spacing="18">
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Border Grid.Column="0"
+                        BackgroundColor="White"
+                        Stroke="#0051BA"
+                        StrokeThickness="1.5"
+                        Padding="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#150051BA" Offset="0,4" Radius="10" />
+                    </Border.Shadow>
+                    <Button Text="התחבר"
+                            BackgroundColor="Transparent"
+                            TextColor="#0051BA"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            HeightRequest="46"
+                            Clicked="OnLoginClicked" />
+                </Border>
+
+                <Border Grid.Column="1"
+                        BackgroundColor="#FFDB00"
+                        Stroke="#E6C300"
+                        StrokeThickness="1"
+                        Padding="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="14" />
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#25FFDB00" Offset="0,4" Radius="10" />
+                    </Border.Shadow>
+                    <Button Text="הירשם"
+                            BackgroundColor="Transparent"
+                            TextColor="#003377"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            HeightRequest="46"
+                            Clicked="OnRegisterClicked" />
+                </Border>
+            </Grid>
+
+            <Border BackgroundColor="#0051BA"
+                    Stroke="#FFDB00"
+                    StrokeThickness="2"
+                    Padding="22,24">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="26" />
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="#300051BA" Offset="0,10" Radius="20" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Border BackgroundColor="#FFDB00"
+                            Padding="12,4"
+                            HorizontalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="99" />
+                        </Border.StrokeShape>
+                        <Label Text="SMART STORE NAVIGATION"
+                               TextColor="#003377"
+                               FontSize="11"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center" />
+                    </Border>
+
+                    <Label Text="IKEA NAVIGATOR"
+                           TextColor="White"
+                           FontSize="27"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+
+                    <Label Text="ניווט חכם, מהיר ונוח בתוך חנות איקאה"
+                           TextColor="#DCEBFF"
+                           FontSize="14"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="White"
+                    Stroke="#E2E8F0"
+                    StrokeThickness="1"
+                    Padding="18">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="24" />
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="#120F172A" Offset="0,8" Radius="18" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="14">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" VerticalOptions="Center">
+                        <Border Grid.Column="0"
+                                WidthRequest="14"
+                                HeightRequest="14"
+                                BackgroundColor="#FFDB00"
+                                Stroke="#0051BA"
+                                StrokeThickness="2"
+                                VerticalOptions="Center">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="7" />
+                            </Border.StrokeShape>
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="2">
+                            <Label Text="באיזו עיר את נמצאת?"
+                                   TextColor="#0051BA"
+                                   FontSize="18"
+                                   FontAttributes="Bold" />
+                            <Label Text="בחרי סניף כדי לפתוח את המפה והמסלולים שלו"
+                                   TextColor="#64748B"
+                                   FontSize="12.5" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Border BackgroundColor="#F8FAFC"
+                                Stroke="#CBD5E1"
+                                StrokeThickness="1.5"
+                                Padding="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Button Text="תל אביב  ◀"
+                                    CommandParameter="תל אביב"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#0F172A"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    HeightRequest="52"
+                                    Clicked="OnCityClicked" />
+                        </Border>
+
+                        <Border BackgroundColor="#F8FAFC"
+                                Stroke="#CBD5E1"
+                                StrokeThickness="1.5"
+                                Padding="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Button Text="ראשון לציון  ◀"
+                                    CommandParameter="ראשון לציון"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#0F172A"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    HeightRequest="52"
+                                    Clicked="OnCityClicked" />
+                        </Border>
+
+                        <Border BackgroundColor="#F8FAFC"
+                                Stroke="#CBD5E1"
+                                StrokeThickness="1.5"
+                                Padding="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Button Text="באר שבע  ◀"
+                                    CommandParameter="באר שבע"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#0F172A"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    HeightRequest="52"
+                                    Clicked="OnCityClicked" />
+                        </Border>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
